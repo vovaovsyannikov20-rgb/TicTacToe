@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.36631.11
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe.Server", "TicTacToe.Server.csproj", "{E148DF1C-82DD-4BE6-870A-71497296AC6A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe.Client", "..\TicTacToe.Client\TicTacToe.Client.csproj", "{5F32E10C-0490-4DAB-BDD7-C303EB308D87}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe.Tests", "..\TicTacToe.Tests\TicTacToe.Tests.csproj", "{07E3C63D-B995-4C73-B836-987E06714744}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{61CFF8BF-E8F2-4D77-9A1E-A877452715E0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{6051D149-60B2-4229-8AB2-9A4CEEF79CE2}"
+	ProjectSection(SolutionItems) = preProject
+		build-and-test.yml = build-and-test.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{585BBAB8-F75D-46B2-81EF-1B8A280B60C0}"
+	ProjectSection(SolutionItems) = preProject
+		docfx.json = docfx.json
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E148DF1C-82DD-4BE6-870A-71497296AC6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E148DF1C-82DD-4BE6-870A-71497296AC6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E148DF1C-82DD-4BE6-870A-71497296AC6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E148DF1C-82DD-4BE6-870A-71497296AC6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F32E10C-0490-4DAB-BDD7-C303EB308D87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F32E10C-0490-4DAB-BDD7-C303EB308D87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F32E10C-0490-4DAB-BDD7-C303EB308D87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F32E10C-0490-4DAB-BDD7-C303EB308D87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07E3C63D-B995-4C73-B836-987E06714744}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07E3C63D-B995-4C73-B836-987E06714744}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07E3C63D-B995-4C73-B836-987E06714744}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07E3C63D-B995-4C73-B836-987E06714744}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6051D149-60B2-4229-8AB2-9A4CEEF79CE2} = {61CFF8BF-E8F2-4D77-9A1E-A877452715E0}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {598061D8-7F6C-40FF-B7C7-24235076AFA4}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,47 @@
+name: Build and Test
+
+on:
+  pull_request:
+    branches: [ main, master ]
+  push:
+    branches: [ main, master ]
+
+jobs:
+  build-and-test:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v2
+
+    - name: Setup NuGet
+      uses: nuget/setup-nuget@v2
+
+    - name: Restore NuGet packages
+      run: nuget restore TicTacToe.sln
+
+    - name: Build solution
+      run: msbuild TicTacToe.sln /p:Configuration=Release /p:Platform="Any CPU"
+
+    - name: Setup VSTest
+      uses: actions/setup-vstest@v1
+      with:
+        vs-version: '2022'
+
+    - name: Run tests
+      run: vstest.console.exe TicTacToe.Tests\bin\Release\TicTacToe.Tests.dll
+
+    - name: Publish Server
+      run: msbuild TicTacToe.Server\TicTacToe.Server.csproj /p:Configuration=Release /p:PublishDir=..\publish\server
+
+    - name: Publish Client
+      run: msbuild TicTacToe.Client\TicTacToe.Client.csproj /p:Configuration=Release /p:PublishDir=..\publish\client
+
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: TicTacToe-Release
+        path: publish/
