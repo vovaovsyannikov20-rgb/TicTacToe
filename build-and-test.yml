@@ -2,16 +2,16 @@ name: Build and Test
 
 on:
   pull_request:
-    branches: [ main, master ]
+    branches: [ master, main ]
   push:
-    branches: [ main, master ]
+    branches: [ master, main ]
 
 jobs:
   build-and-test:
     runs-on: windows-latest
 
     steps:
-    - name: Checkout
+    - name: Checkout code
       uses: actions/checkout@v4
 
     - name: Setup MSBuild
@@ -20,28 +20,13 @@ jobs:
     - name: Setup NuGet
       uses: nuget/setup-nuget@v2
 
-    - name: Restore NuGet packages
+    - name: Restore packages
       run: nuget restore TicTacToe.sln
 
     - name: Build solution
-      run: msbuild TicTacToe.sln /p:Configuration=Release /p:Platform="Any CPU"
-
-    - name: Setup VSTest
-      uses: actions/setup-vstest@v1
-      with:
-        vs-version: '2022'
+      run: msbuild TicTacToe.sln /p:Configuration=Release
 
     - name: Run tests
-      run: vstest.console.exe TicTacToe.Tests\bin\Release\TicTacToe.Tests.dll
-
-    - name: Publish Server
-      run: msbuild TicTacToe.Server\TicTacToe.Server.csproj /p:Configuration=Release /p:PublishDir=..\publish\server
-
-    - name: Publish Client
-      run: msbuild TicTacToe.Client\TicTacToe.Client.csproj /p:Configuration=Release /p:PublishDir=..\publish\client
-
-    - name: Upload artifacts
-      uses: actions/upload-artifact@v4
-      with:
-        name: TicTacToe-Release
-        path: publish/
+      run: |
+        nuget install NUnit.ConsoleRunner -Version 3.16.3 -OutputDirectory testrunner
+        testrunner\NUnit.ConsoleRunner.3.16.3\tools\nunit3-console.exe TicTacToe.Tests\bin\Release\TicTacToe.Tests.dll
